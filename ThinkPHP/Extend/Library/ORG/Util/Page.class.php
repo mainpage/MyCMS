@@ -121,13 +121,15 @@ class Page {
             $page=($nowCoolPage-1)*$this->rollPage+$i;
             if($page!=$this->nowPage){
                 if($page<=$this->totalPages){
-                    $linkPage .= "&nbsp;<a href='".$url."&".$p."=$page'>&nbsp;".$page."&nbsp;</a>";
+                    //$linkPage .= "&nbsp;<a href='".$url."&".$p."=$page'>&nbsp;".$page."&nbsp;</a>";
+                    $linkPage .= "<a href='".$url."&".$p."=$page' class='number'>".$page."</a>"; //修改了源码，添加了样式
                 }else{
                     break;
                 }
             }else{
                 if($this->totalPages != 1){
-                    $linkPage .= "&nbsp;<span class='current'>".$page."</span>";
+                    //$linkPage .= "&nbsp;<span class='current'>".$page."</span>";
+                    $linkPage .= "<a class='number current'>".$page."</a>";
                 }
             }
         }

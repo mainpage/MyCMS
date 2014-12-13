@@ -30,9 +30,7 @@
 		  
 			<!-- Sidebar Profile links -->
 			<div id="profile-links">
-				Hello, <a href="#" title="Edit your profile">John Doe</a>
-				<br />
-				<a href="#" title="View the Site">View the Site</a> | <a href="#" title="Sign Out">Sign Out</a>
+				Hello, <a href="#" title="Edit your profile">John Doe</a> | <a href="#" title="Sign Out">Sign Out</a>
 			</div>        
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->
@@ -166,10 +164,10 @@
 							<thead>
 								<tr>
 								   <th><input class="check-all" type="checkbox" /></th>
-								   <th>Column 1</th>
-								   <th>Column 2</th>
-								   <th>Column 3</th>
-								   <th>Column 4</th>
+								   <th>Subject</th>
+								   <th>Author</th>
+								   <th>CreateTime</th>
+								   <th>Action</th>
 								</tr>
 							</thead>
 						 
@@ -186,7 +184,8 @@
 										</div>
 										
 										<div class="pagination">
-											<a href="#" title="First Page">&laquo; First</a><a href="#" title="Previous Page">&laquo; Previous</a>
+											{$pagination}
+											<!--<a href="#" title="First Page">&laquo; First</a><a href="#" title="Previous Page">&laquo; Previous</a>
 											<a href="#" class="number" title="1">1</a>
 											<a href="#" class="number" title="2">2</a>
 											<a href="#" class="number current" title="3">3</a>
@@ -209,7 +208,6 @@
 										<!-- Icons -->
 										 <a href="#" title="Edit"><img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="Edit" /></a>
 										 <a href="#" title="Delete"><img src="__PUBLIC__/Images/admin/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="__PUBLIC__/Images/admin/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
 									</td>
 								</tr>
 								</foreach>
