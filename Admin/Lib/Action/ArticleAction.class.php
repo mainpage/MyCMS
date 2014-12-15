@@ -3,6 +3,11 @@
 	{
 		public function index()
 		{
+			if(isset($_GET['id']))
+			{
+				$article = M('Article');
+				$data = $article->where();//
+			}
 			$this->display();
 		}
 
@@ -10,7 +15,7 @@
 		{
 			$article = M('Article');
 			$article->subject = $_POST['subject'];
-			$article->message = $_POST['editorValue'];
+			$article->message = $_POST['editorValue']; //editorValue即为ueditor的内容
 			$article->author = "sch";
 			$article->createtime = time();
 			if($article->add())

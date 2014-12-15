@@ -205,7 +205,7 @@
 									<td><?php echo ($article["createtime"]); ?></td>
 									<td>
 										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="Edit" /></a>
+										 <a href="/thinkphpTest/admin.php/Article/edit/id/<?php echo ($article["id"]); ?>" title="Edit"><img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="Edit" /></a>
 										 <a href="#" title="Delete"><img src="__PUBLIC__/Images/admin/icons/cross.png" alt="Delete" /></a> 
 									</td>
 								</tr><?php endforeach; endif; ?>
