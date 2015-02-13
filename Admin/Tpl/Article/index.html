@@ -17,6 +17,7 @@
 <script type="text/javascript" src="__PUBLIC__/Js/admin/jquery.date.js"></script>
 <script type="text/javascript" src="__ROOT__/ueditor/editor_config.js"></script>
 <script type="text/javascript" src="__ROOT__/ueditor/editor_all.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/admin/sch.js"></script>
 </head>
 
 <body>
@@ -92,26 +93,37 @@
 		</div></div> <!-- End #sidebar -->
 		
 		<div id="main-content">
-			<h2>新文章</h2>
-			<br></br>
-			<form action="__URL__/add" method="post">
-				<p class="subtit">文章标题</p>
-				<input type="text" id="txtTitle" name="subject" style="width:560px; height:20px; float:left;" maxlength="100" value="{$article_item.subject}"/>
+			<h2>{$h1}</h2>
+			<form action="__URL__/{$button_action}" method="post">
+				<p style="font-size:17px">Title</p>
+				<input type="text" id="txtTitle" name="title" style="width:560px; height:30px; float:left; font-family:Microsoft YaHei; font-size:18px;" maxlength="100" value="{$article_item.title}"/>
+				<br></br><br>
+				<p style="font-size:17px; margin-top:10px;">Content</p>
+				<div style="display:none;">
+					<a href="#" class="close"><img src="__PUBLIC__/Images/admin/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
+				   <div id="save-notification"></div>
+			    </div>
+			    <textarea id="myEditor">{$article_item.content}</textarea>
+				<!--<script type="text/javascript">
+					//var editor = new UE.ui.Editor({
+					    //initialContent: '{$article_item.message}'
+					//});
+					var editor = new UE.ui.Editor();
+					editor.render("myEditor");
+				</script>-->
 				<br></br>
-				<p class="subtit">文章内容</p>
-			    <div id="myEditor">
-					<script type="text/javascript">
-						var editor = new baidu.editor.ui.Editor({
-						    initialContent: '{$article_item.message}'
-						});
-						editor.render("myEditor");
-					</script>
-				</div>
-				<br></br>
-				<input type="hidden" value="{$article_item.id}" name="id"/>
-				<input type="submit" value="{$btn_ok_text}"/>
+				<!--隐藏域，保存当前正在编辑文章的id-->
+				<input type="hidden" id="article-id"name="id" value="{$article_item.id}"/>
+				<input id="submit-article" class="button" type="submit" value="{$button_text}"/>
+				<input id="save-article" class="button" type="button" value="Save"/>
 			</form>
+			<div id="footer">
+				<small> <!-- Remove this notice or replace it with whatever you want -->
+						&#169; Copyright 2009 Your Company | Powered by <a href="http://themeforest.net/item/simpla-admin-flexible-user-friendly-admin-skin/46073">Simpla Admin</a> | <a href="#">Top</a>
+				</small>
+			</div><!-- End #footer -->
 		</div>
 	</div>
+
 </body>
 </html>

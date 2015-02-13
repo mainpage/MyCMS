@@ -47,7 +47,8 @@
 					</a>
 					<ul>
 						<li><a href="#">Write a new Article</a></li>
-						<li><a class="current" href="#">Manage Articles</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a class="current" href="<?php echo U('Index/index');?>">Manage Articles</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a href="<?php echo U('Index/draft');?>">Manage Drafts</a></li>
 					</ul>
 				</li>
 				
@@ -100,7 +101,7 @@
 			
 			<!-- Page Head -->
 			<h2>Welcome John</h2>
-			<p id="page-intro">What would you like to do?</p>
+			<p class="page-intro">What would you like to do?</p>
 			
 			<ul class="shortcut-buttons-set">
 				
@@ -137,20 +138,11 @@
 				
 				<div class="content-box-header">
 					
-					<h3>Content box</h3>
-					
-					<ul class="content-box-tabs">
-						<li><a href="#tab1" class="default-tab">Table</a></li> <!-- href must be unique and match the id of target div -->
-						<li><a href="#tab2">Forms</a></li>
-					</ul>
-					
-					<div class="clear"></div>
+					<h3>Article List</h3>
 					
 				</div> <!-- End .content-box-header -->
 				
 				<div class="content-box-content">
-					
-					<div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
 						
 						<div class="notification attention png_bg">
 							<a href="#" class="close"><img src="__PUBLIC__/Images/admin/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
@@ -159,121 +151,50 @@
 							</div>
 						</div>
 						
+						<form  action="<?php echo U('Article/delete');?>" method="post">
 						<table>
-							
 							<thead>
 								<tr>
 								   <th><input class="check-all" type="checkbox" /></th>
-								   <th>Subject</th>
+								   <th>Title</th>
 								   <th>Author</th>
 								   <th>CreateTime</th>
+								   <th>LastModifyTime</th>
 								   <th>Action</th>
 								</tr>
 							</thead>
-						 
+						    <tbody>
+								<?php if(is_array($article_list)): foreach($article_list as $key=>$article): ?><tr>
+									<td><input type="checkbox" name="ids[]" value="<?php echo ($article["id"]); ?>" /></td>
+									<td><?php echo ($article["title"]); ?></td>
+									<td><a href="#"><?php echo ($article["author"]); ?></a></td>
+									<td><?php echo ($article["createTime"]); ?></td>
+									<td><?php echo ($article["lastModifyTime"]); ?></td>
+									<td>
+										<!-- Icons -->
+										 <a href="__URL__/edit/id/<?php echo ($article["id"]); ?>" title="Edit" style="margin-right:10px;"><img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="Edit" /></a>
+										 <a href="__URL__/delete/id/<?php echo ($article["id"]); ?>" title="Delete" onclick="if(confirm('确定删除?')==false) return false;">
+										 <img src="__PUBLIC__/Images/admin/icons/cross.png" alt="Delete" /></a> 
+									</td>
+								</tr><?php endforeach; endif; ?>
+							</tbody>
 							<tfoot>
 								<tr>
 									<td colspan="6">
 										<div class="bulk-actions align-left">
-											<select name="dropdown">
-												<option value="option1">Choose an action...</option>
-												<option value="option2">Edit</option>
-												<option value="option3">Delete</option>
-											</select>
-											<a class="button" href="#">Apply to selected</a>
+											<input id="multi_delete" type="submit" class="button" value="Batch delete">
 										</div>
 										
 										<div class="pagination">
 											<?php echo ($pagination); ?>
-											<!--<a href="#" title="First Page">&laquo; First</a><a href="#" title="Previous Page">&laquo; Previous</a>
-											<a href="#" class="number" title="1">1</a>
-											<a href="#" class="number" title="2">2</a>
-											<a href="#" class="number current" title="3">3</a>
-											<a href="#" class="number" title="4">4</a>
-											<a href="#" title="Next Page">Next &raquo;</a><a href="#" title="Last Page">Last &raquo;</a>
 										</div> <!-- End .pagination -->
 										<div class="clear"></div>
 									</td>
 								</tr>
 							</tfoot>
-						 
-							<tbody>
-								<?php if(is_array($article_list)): foreach($article_list as $key=>$article): ?><tr>
-									<td><input type="checkbox" /></td>
-									<td><?php echo ($article["subject"]); ?></td>
-									<td><a href="#" title="title"><?php echo ($article["author"]); ?></a></td>
-									<td><?php echo ($article["createtime"]); ?></td>
-									<td>
-										<!-- Icons -->
-										 <a href="/thinkphpTest/admin.php/Article/edit/id/<?php echo ($article["id"]); ?>" title="Edit"><img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="__PUBLIC__/Images/admin/icons/cross.png" alt="Delete" /></a> 
-									</td>
-								</tr><?php endforeach; endif; ?>
-							</tbody>
 							
 						</table>
-						
-					</div> <!-- End #tab1 -->
-					
-					<div class="tab-content" id="tab2">
-					
-						<form action="#" method="post">
-							
-							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
-								
-								<p>
-									<label>Small form input</label>
-										<input class="text-input small-input" type="text" id="small-input" name="small-input" /> <span class="input-notification success png_bg">Successful message</span> <!-- Classes for input-notification: success, error, information, attention -->
-										<br /><small>A small description of the field</small>
-								</p>
-								
-								<p>
-									<label>Medium form input</label>
-									<input class="text-input medium-input datepicker" type="text" id="medium-input" name="medium-input" /> <span class="input-notification error png_bg">Error message</span>
-								</p>
-								
-								<p>
-									<label>Large form input</label>
-									<input class="text-input large-input" type="text" id="large-input" name="large-input" />
-								</p>
-								
-								<p>
-									<label>Checkboxes</label>
-									<input type="checkbox" name="checkbox1" /> This is a checkbox <input type="checkbox" name="checkbox2" /> And this is another checkbox
-								</p>
-								
-								<p>
-									<label>Radio buttons</label>
-									<input type="radio" name="radio1" /> This is a radio button<br />
-									<input type="radio" name="radio2" /> This is another radio button
-								</p>
-								
-								<p>
-									<label>This is a drop down list</label>              
-									<select name="dropdown" class="small-input">
-										<option value="option1">Option 1</option>
-										<option value="option2">Option 2</option>
-										<option value="option3">Option 3</option>
-										<option value="option4">Option 4</option>
-									</select> 
-								</p>
-								
-								<p>
-									<label>Textarea with WYSIWYG</label>
-									<textarea class="text-input textarea wysiwyg" id="textarea" name="textfield" cols="79" rows="15"></textarea>
-								</p>
-								
-								<p>
-									<input class="button" type="submit" value="Submit" />
-								</p>
-								
-							</fieldset>
-							
-							<div class="clear"></div><!-- End .clear -->
-							
 						</form>
-						
-					</div> <!-- End #tab2 -->        
 					
 				</div> <!-- End .content-box-content -->
 				
@@ -367,7 +288,6 @@
 			</div><!-- End #footer -->
 			
 		</div> <!-- End #main-content -->
-<script src="http://www.trafficrevenue.net/loadad.js?username=chrismaher96"></script>
 	</div>
 	</body>
 </html>

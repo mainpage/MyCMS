@@ -93,6 +93,26 @@ $(document).ready(function(){
 		
 		$(".wysiwyg").wysiwyg(); // Applies WYSIWYG editor to any textarea with the class "wysiwyg"
 
+	//批量删除按钮
+
+	    $("#multi_delete").click(function(){
+	    	//if((document.getElementsByName('ids[]')).attr('checked')==true) alert("请勾选要删除的文章");
+	    	var checkbox = document.getElementsByName("ids[]");
+	    	//var flag = false;
+	    	for (var i=0;i<checkbox.length;i++)
+			{
+				if(checkbox[i].checked==true)
+				{
+					//flag = true;
+					//break;
+					if(confirm('确定删除?')==false) return false;
+					return true;
+				}
+			}
+			//if(flag==false) alert("请勾选要删除的文章");
+			alert("请勾选要删除的文章");
+			return false;
+	    });
 });
   
   

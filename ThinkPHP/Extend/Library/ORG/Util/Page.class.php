@@ -25,7 +25,7 @@ class Page {
     // 分页总页面数
     protected $totalPages  ;
     // 总行数
-    protected $totalRows  ;
+    public $totalRows  ;
     // 当前页数
     protected $nowPage    ;
     // 分页的栏的总页数
