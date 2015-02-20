@@ -230,27 +230,28 @@ a.remove-link:hover {
                 padding: 40px 0 0 0;
                 }
 
-.column-left {
+/*.column-left {
                 width: 48%;
                 float: left;
                 }
                 
 .column-right {
                 width: 48%;
-                float: right;
+                float: left;
                 }
+                */
                
-#page-intro {
+.page-intro {
                 font-size: 17px;
                 padding: 0 0 20px 0;
                 }
 
 				
 #footer {
-				border-top: 1px solid #ccc;
-				margin: 40px 0 0 0;
-				padding: 20px 0;
-				font-size: 12px;
+		border-top: 1px solid #ccc;
+		margin: 40px 0 0 0;
+		padding: 20px 0;
+		font-size: 12px;
                 }
 /************ Lists ************/
 
@@ -333,6 +334,14 @@ ul.content-box-tabs li a.current {
                 font-size: 13px;
                 border-top: 1px solid #ccc;
                 }
+
+.grid {
+                width: 46.8%;
+                float: left;
+                margin-right: 15px;
+                margin-left: 15px;
+                border-radius: 0;
+                }
                 
 /************ Table ************/
 
@@ -407,7 +416,7 @@ ul.content-box-tabs li a.current {
                 border: 1px solid #ccc;
                 background: #f7f7f7 url('../../Images/admin/shortcut-button-bg.gif') top left no-repeat;
                 display: block;
-                width: 150px;
+                width: 120px;
                 margin: 0 0 20px 0;
                 }
 
@@ -633,7 +642,7 @@ body#login {
 				
 #login-wrapper #login-content p .button {
 				width: auto;
-				margin-top: 20px;
+				margin-top: 5px;
 				}
 
 /********************************      jQuery plugins styles      ********************************/

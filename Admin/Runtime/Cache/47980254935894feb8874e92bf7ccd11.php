@@ -18,6 +18,8 @@
 <script type="text/javascript" src="__PUBLIC__/Js/admin/facebox.js"></script>
 <!-- jQuery WYSIWYG Plugin -->
 <script type="text/javascript" src="__PUBLIC__/Js/admin/jquery.wysiwyg.js"></script>
+<!-- my jquery code -->
+<script type="text/javascript" src="__PUBLIC__/Js/admin/others.js"></script>
 
 </head>
   
@@ -33,21 +35,21 @@
 		<div id="login-content">			
 			<form action="__URL__/login" method="POST">				
 				<p>
-					<label>Username</label>
-					<input class="text-input" type="text" name="user-name"/>
+					<label for="user-name">Username</label>
+					<input class="text-input" type="text" id="user-name" name="user-name"/>
 				</p>
 				<div class="clear"></div>
 				<p>
-					<label>Password</label>
-					<input class="text-input" type="password" name="password"/>
+					<label for="password">Password</label>
+					<input class="text-input" type="password" id="password" name="password"/>
 				</p>
 				<div class="clear"></div>
-				<p id="remember-password">
+				<!--<p id="remember-password">
 					<input type="checkbox" />Remember me
 				</p>
-				<div class="clear"></div>
+				<div class="clear"></div>-->
 				<p>
-					<input class="button" type="submit" value="Sign In" />
+					<input id="login-button" class="button" type="submit" value="Sign In" />
 				</p>				
 			</form>
 		</div> <!-- End #login-content -->	

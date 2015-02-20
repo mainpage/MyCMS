@@ -5,12 +5,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Simpla Admin</title>
 <link rel="stylesheet" href="__PUBLIC__/Css/admin/reset.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="__PUBLIC__/Css/admin/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="__PUBLIC__/Css/admin/invalid.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="__PUBLIC__/Css/admin/style.css" type="text/css" media="screen" />
 
 <script type="text/javascript" src="__PUBLIC__/Js/admin/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Js/admin/simpla.jquery.configuration.js"></script>
-<script type="text/javascript" src="__PUBLIC__/Js/admin/facebox.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Js/admin/jquery.wysiwyg.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Js/admin/jquery.datePicker.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Js/admin/jquery.date.js"></script>
@@ -91,7 +90,7 @@
 			</noscript>
 			
 			<!-- Page Head -->
-			<h2>Manager Articles</h2>
+			<h2>Manager Memos</h2>
 			<p class="page-intro">What would you like to do?</p>
 			
 			<ul class="shortcut-buttons-set">
@@ -128,67 +127,46 @@
 			<div class="notification information png_bg">
 				<a href="#" class="close"><img src="__PUBLIC__/Images/admin/icons/cross_grey_small.png" title="Close this notification" alt="close"></a>
 				<div>
-					Here is the existing articles
+					Here is the existing memos
 				</div>
 			</div>
-			<div class="content-box"><!-- Start Content Box -->
-				
+			<div class="content-box">
 				<div class="content-box-header">
-					
-					<h3><?php echo ($list_type); ?></h3>
-					
+				    <h3>Memo list</h3>
 				</div> <!-- End .content-box-header -->
-				
 				<div class="content-box-content">
-						
-						<form  action="<?php echo U('Article/delete');?>" method="post">
-						<table>
-							<thead>
-								<tr>
-								   <th><input class="check-all" type="checkbox" /></th>
-								   <th>Title</th>
-								   <th>Author</th>
-								   <th>CreateTime</th>
-								   <th>LastModifyTime</th>
-								   <th>Action</th>
-								</tr>
-							</thead>
-						    <tbody>
-								<?php if(is_array($article_list)): foreach($article_list as $key=>$article): ?><tr>
-									<td><input type="checkbox" name="ids[]" value="<?php echo ($article["id"]); ?>" /></td>
-									<td><?php echo ($article["title"]); ?></td>
-									<td><?php echo ($article["author"]); ?></td>
-									<td><?php echo ($article["createTime"]); ?></td>
-									<td><?php echo ($article["lastModifyTime"]); ?></td>
-									<td>
-										<!-- Icons -->
-										 <a href="__URL__/<?php echo ($edit_func); ?>/id/<?php echo ($article["id"]); ?>" title="Edit" style="margin-right:10px;"><img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="Edit" /></a>
-										 <a href="__URL__/delete/id/<?php echo ($article["id"]); ?>" title="Delete" onclick="if(confirm('确定删除?')==false) return false;">
-										 <img src="__PUBLIC__/Images/admin/icons/cross.png" alt="Delete" /></a> 
-									</td>
-								</tr><?php endforeach; endif; ?>
-							</tbody>
-							<tfoot>
-								<tr>
-									<td colspan="6">
-										<div class="bulk-actions align-left">
-											<input id="multi_delete" type="submit" class="button" value="Batch delete">
-										</div>
-										
-										<div class="pagination">
-											<?php echo ($pagination); ?>
-										</div> <!-- End .pagination -->
-										<div class="clear"></div>
-									</td>
-								</tr>
-							</tfoot>
+					<?php if(is_array($memo_list)): foreach($memo_list as $key=>$memo): ?><div class="content-box grid">
+							<div class="content-box-header" >
+							    <h3><?php echo ($memo["lastModifyTime"]); ?></h3>
+								<div style="float:right; margin:10px 15px 0 0;">
+								<a href="__URL__/edit/id/<?php echo ($memo["id"]); ?>" title="Edit" style="margin-right:10px;">
+									<img src="__PUBLIC__/Images/admin/icons/pencil.png" alt="Edit" />
+								</a>
+								<a href="__URL__/delete/id/<?php echo ($memo["id"]); ?>" title="Delete" onclick="if(confirm('确定删除?')==false) return false;">
+									<img src="__PUBLIC__/Images/admin/icons/cross.png" alt="Delete" />
+								</a> 
+								</div>
+							</div> <!-- End .content-box-header -->
 							
-						</table>
-						</form>
-					
-				</div> <!-- End .content-box-content -->
-				
-			</div> <!-- End .content-box -->
+							<div class="content-box-content">
+								
+								<div class="tab-content default-tab">
+								
+									<h4><?php echo ($memo["keyword"]); ?></h4>
+									<p><?php echo ($memo["content"]); ?></p>
+									
+								</div> <!-- End #tab3 -->        
+								
+							</div> <!-- End .content-box-content -->
+							
+						</div> <!-- End .content-box --><?php endforeach; endif; ?>
+					<div class="pagination" style="float:right">
+						<?php echo ($pagination); ?>
+					</div> <!-- End .pagination -->
+					<div class="clear"></div>
+				</div><!-- End .content-box-content -->
+			</div>
+			<div class="clear"></div>
 			
 
 			<div id="footer">

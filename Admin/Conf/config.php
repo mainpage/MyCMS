@@ -9,6 +9,6 @@ return array(
 	'DB_PWD'			=>	'1123',
 	'DB_PORT'			=>	'3306',
 	'DB_PREFIX'		    =>	'think_',
-	'SHOW_PAGE_TRACE'   =>   true, // 显示页面Trace信息
+	//'SHOW_PAGE_TRACE'   =>   true, // 显示页面Trace信息
 );
 ?>

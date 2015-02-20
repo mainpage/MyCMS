@@ -15,8 +15,12 @@
 <script type="text/javascript" src="__PUBLIC__/Js/admin/jquery.wysiwyg.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Js/admin/jquery.datePicker.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Js/admin/jquery.date.js"></script>
+<script type="text/javascript" src="__ROOT__/ueditor/editor_config.js"></script>
+<script type="text/javascript" src="__ROOT__/ueditor/editor_all.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/admin/article.js"></script>
 </head>
-	<body>
+
+<body>
 	<div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
 		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
@@ -81,58 +85,39 @@
 			</ul> <!-- End #main-nav -->
 					
 		</div></div> <!-- End #sidebar -->
-		<div id="main-content"> <!-- Main Content Section with everything -->
-			
-			<noscript> <!-- Show a notification if the user has disabled javascript -->
-				<div class="notification error png_bg">
-					<div>
-						Javascript is disabled or is not supported by your browser. Please <a href="http://browsehappy.com/" title="Upgrade to a better browser">upgrade</a> your browser or <a href="http://www.google.com/support/bin/answer.py?answer=23852" title="Enable Javascript in your browser">enable</a> Javascript to navigate the interface properly.
-					</div>
-				</div>
-			</noscript>
-			
-			<!-- Page Head -->
-			<h2>Welcome John</h2>
-			<p class="page-intro">What would you like to do?</p>
-			
-			<ul class="shortcut-buttons-set">
-			
-	<li><a class="shortcut-button" href="<?php echo U('Memo/add');?>"><span>
-		<img src="__PUBLIC__/Images/admin/icons/pencil_48.png" alt="icon" /><br />
-		Create a Memo
-	</span></a></li>
-	
-	<li><a class="shortcut-button" href="<?php echo U('Article/add');?>"><span>
-		<img src="__PUBLIC__/Images/admin/icons/paper_content_pencil_48.png" alt="icon" /><br />
-		Write an Article
-	</span></a></li>
-	
-	<li><a class="shortcut-button" href="#"><span>
-		<img src="__PUBLIC__/Images/admin/icons/image_add_48.png" alt="icon" /><br />
-		Upload an Image
-	</span></a></li>
-	
-	<li><a class="shortcut-button" href="#"><span>
-		<img src="__PUBLIC__/Images/admin/icons/clock_48.png" alt="icon" /><br />
-		Add an Event
-	</span></a></li>
-	
-	<li><a class="shortcut-button" href="#messages" rel="modal"><span>
-		<img src="__PUBLIC__/Images/admin/icons/comment_48.png" alt="icon" /><br />
-		Open Modal
-	</span></a></li>
-	
-</ul><!-- End .shortcut-buttons-set -->
-
-<div class="clear"></div> <!-- End .clear -->
-
+		
+		<div id="main-content">
+			<h2><?php echo ($h1); ?></h2>
+			<form action="__URL__/<?php echo ($button_action); ?>" method="post">
+				<p style="font-size:17px">Title</p>
+				<input type="text" id="txtTitle" name="title" style="width:560px; height:25px; float:left; font-family:Microsoft YaHei; font-size:15px;" maxlength="100" value="<?php echo ($article_item["title"]); ?>"/>
+				<br></br><br>
+				<p style="font-size:17px; margin-top:10px;">Content</p>
+				<div style="display:none;">
+					<a href="#" class="close"><img src="__PUBLIC__/Images/admin/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
+				   <div id="save-notification"></div>
+			    </div>
+			    <textarea id="myEditor"><?php echo ($article_item["content"]); ?></textarea>
+				<!--<script type="text/javascript">
+					//var editor = new UE.ui.Editor({
+					    //initialContent: '<?php echo ($article_item["message"]); ?>'
+					//});
+					var editor = new UE.ui.Editor();
+					editor.render("myEditor");
+				</script>-->
+				<br></br>
+				<!--隐藏域，保存当前正在编辑文章的id-->
+				<input type="hidden" id="article-id"name="id" value="<?php echo ($article_item["id"]); ?>"/>
+				<input id="submit-article" class="button" type="submit" value="<?php echo ($button_text); ?>"/>
+				<input id="save-article" class="button" type="button" value="Save as draft"/>
+			</form>
 			<div id="footer">
 				<small> <!-- Remove this notice or replace it with whatever you want -->
 						&#169; Copyright 2009 Your Company | Powered by <a href="http://themeforest.net/item/simpla-admin-flexible-user-friendly-admin-skin/46073">Simpla Admin</a> | <a href="#">Top</a>
 				</small>
 			</div><!-- End #footer -->
-			
-		</div> <!-- End #main-content -->
+		</div>
 	</div>
-	</body>
+
+</body>
 </html>
