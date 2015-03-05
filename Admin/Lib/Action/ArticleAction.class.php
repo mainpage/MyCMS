@@ -268,3 +268,5 @@ class ArticleAction extends BaseAction
     }
         
 }
+
+?>

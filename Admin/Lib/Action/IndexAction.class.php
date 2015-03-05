@@ -14,4 +14,3 @@ class IndexAction extends BaseAction
 }
 
 ?>
-
